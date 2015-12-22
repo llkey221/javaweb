@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<j2ee:taglib version="2.0" xmlns:j2ee="http://java.sun.com/xml/ns/j2ee" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd ">
+  <j2ee:tlib-version>1.0</j2ee:tlib-version>
+  <j2ee:short-name>ELFunc</j2ee:short-name>
+  <j2ee:uri>/elF</j2ee:uri>
+  <j2ee:function>
+  	<j2ee:description>ELCustomeFunction</j2ee:description>
+  	<j2ee:name>filter</j2ee:name>
+  	<j2ee:function-class>com.study.jstl.FilterHtml</j2ee:function-class>
+  	<j2ee:function-signature>java.lang.String filter(java.lang.String)</j2ee:function-signature>
+  </j2ee:function>
+</j2ee:taglib>
