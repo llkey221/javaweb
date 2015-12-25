@@ -20,7 +20,7 @@ public class JdbcPool implements DataSource{
 	
 	private static LinkedList<Connection> listConnections=new LinkedList<Connection>();
 	
-	static{
+	static{ 
 		
 		InputStream in=JdbcPool.class.getClassLoader().getResourceAsStream("db.properties");
 		Properties prop=new Properties();

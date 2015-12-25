@@ -208,7 +208,7 @@
     <servlet-name>requestDemo1</servlet-name>
     <url-pattern>/servlet/requestDemo1</url-pattern>
   </servlet-mapping>
-    <servlet>
+  <servlet>
     <servlet-name>cookieDemo1</servlet-name>
     <servlet-class>com.study.cookie.cookieDemo1</servlet-class>
   </servlet>
@@ -217,16 +217,33 @@
     <url-pattern>/servlet/cookieDemo1</url-pattern>
   </servlet-mapping>
   <error-page>
-  	<error-code>404</error-code>
-  	<location>/404.jsp</location>
+    <error-code>404</error-code>
+    <location>/404.jsp</location>
   </error-page>
   <servlet>
-  	<servlet-name>jsp</servlet-name>
-      <servlet-class>org.apache.jasper.servlet.JspServlet</servlet-class>
+    <servlet-name>jsp</servlet-name>
+    <servlet-class>org.apache.jasper.servlet.JspServlet</servlet-class>
   </servlet>
-	<servlet-mapping>
-		<servlet-name>jsp</servlet-name>
-		<url-pattern>*.jsp</url-pattern>
-		<url-pattern>*.jspf</url-pattern>
-	</servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>jsp</servlet-name>
+    <url-pattern>*.jsp</url-pattern>
+    <url-pattern>*.jspf</url-pattern>
+  </servlet-mapping>
+  
+  <filter>
+  	<filter-name>allfilter</filter-name>
+  	<filter-class>com.study.filter.AllFilter</filter-class>
+  	<init-param>
+  		<param-name>Author</param-name>
+  		<param-value>Richard</param-value>
+  	</init-param>
+  	<init-param>
+  		<param-name>CreateDate</param-name>
+  		<param-value>2015-12-25</param-value>
+  	</init-param>
+  </filter>
+  <filter-mapping>
+  		<filter-name>allfilter</filter-name>
+  		<url-pattern>/*</url-pattern>
+  </filter-mapping>
 </web-app>
