@@ -1,6 +1,7 @@
 package com.study.connectionpool;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -8,16 +9,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class DataSourceServlet
+ * Servlet implementation class JNDITestServlet
  */
-@WebServlet("/DataSourceServlet")
-public class DataSourceServlet extends HttpServlet {
+@WebServlet("/JNDITestServlet")
+public class JNDITestServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public DataSourceServlet() {
+    public JNDITestServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,9 +29,8 @@ public class DataSourceServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		DataSourceTest test=new DataSourceTest();
-		int id=test.dbcpDataSourceTest();
-		response.setContentType("text/html;charset=utf-8");
-		response.getWriter().append(String.format("<h3>插入成功,生成的ID是：%d</h3>",id));
+		test.JNDIDataSourceTest();
+		
 	}
 
 	/**

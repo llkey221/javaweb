@@ -246,11 +246,36 @@
     <url-pattern>/*</url-pattern>
   </filter-mapping>
   <servlet>
-  	<servlet-name>datasourceTest</servlet-name>
-  	<servlet-class>com.study.connectionpool.DataSourceServlet</servlet-class>
+    <servlet-name>datasourceTest</servlet-name>
+    <servlet-class>com.study.connectionpool.DataSourceServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>datasourceTest</servlet-name>
-  	<url-pattern>/servlet/dstest</url-pattern>
+    <servlet-name>datasourceTest</servlet-name>
+    <url-pattern>/servlet/dstest</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>jndiTest</servlet-name>
+    <servlet-class>com.study.connectionpool.JNDITestServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>jndiTest</servlet-name>
+    <url-pattern>/servlet/jndi</url-pattern>
+  </servlet-mapping>
+  
+    <servlet>
+    <servlet-name>accountTransfer</servlet-name>
+    <servlet-class>com.study.threadLocal.AccountServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>accountTransfer</servlet-name>
+    <url-pattern>/account/transfer</url-pattern>
+  </servlet-mapping>
+  <filter>
+  	<filter-name>transFilter</filter-name>
+  	<filter-class>com.study.threadLocal.TransactionFilter</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>transFilter</filter-name>
+  	<servlet-name>accountTransfer</servlet-name>
+  </filter-mapping>
 </web-app>

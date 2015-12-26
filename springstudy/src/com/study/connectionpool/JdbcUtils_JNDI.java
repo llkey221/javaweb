@@ -5,35 +5,26 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import com.mchange.v2.c3p0.ComboPooledDataSource;
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.sql.DataSource;
 
-/**
- * @className:JdbcUtils_C3P0
- * @description:开源组件 C3P0数据源工具类
- * @author Administrator
- *
- */
-public class JdbcUtils_C3P0 {
-	private static ComboPooledDataSource ds=null;
+public class JdbcUtils_JNDI {
+	private static DataSource ds=null;
 	
 	static{
-		try {
-			// 通过代码创建C3P0数据库连接池
-			/*
-			 * ds = new ComboPooledDataSource();
-			 * ds.setDriverClass("com.mysql.jdbc.Driver");
-			 * ds.setJdbcUrl("jdbc:mysql://localhost:3306/jdbcstudy");
-			 * ds.setUser("root"); ds.setPassword("XDP");
-			 * ds.setInitialPoolSize(10); ds.setMinPoolSize(5);
-			 * ds.setMaxPoolSize(20);
-			 */
-
-			// 读取默认的数据源配置
-			// ds= new ComboPooledDataSource();
-			ds = new ComboPooledDataSource("MySQL"); // 使用c3p0的命名配置来创建数据源
-		} catch (Exception e) {
+		try{
+			//初始化JNDI
+			Context initCtx=new InitialContext();
+			//得到JNDI窗口
+			Context envCtx=(Context)initCtx.lookup("java:comp/env");
+			//从JNDI窗口中检索name=jdbc/datasource的数据源
+			ds=(DataSource) envCtx.lookup("jdbc/datasource");
+		}catch(Exception e){
 			throw new ExceptionInInitializerError(e);
-		}	 
+		}catch(Throwable e){
+			e.printStackTrace();
+		}
 	}
 	
 	/**

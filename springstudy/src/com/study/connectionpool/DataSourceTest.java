@@ -6,9 +6,9 @@ import java.sql.ResultSet;
 
 import com.mysql.jdbc.Statement;
 
-public class DataSoureTest {
+public class DataSourceTest {
 	
-	private static DataSoureTest dsTest=new DataSoureTest();
+	private static DataSourceTest dsTest=new DataSourceTest();
 	
 	public int dbcpDataSourceTest(){
 		Connection conn=null;
@@ -53,6 +53,33 @@ public class DataSoureTest {
 			}
 		}catch(Exception e){
 			e.printStackTrace();
+		}finally{
+			JdbcUtils_C3P0.release(conn, st, rs);
+		}
+	}
+	
+	/**
+	 * 测试JNDI数据源
+	 */
+	public void JNDIDataSourceTest(){
+		Connection conn=null;
+		PreparedStatement st=null;
+		ResultSet rs=null;
+		try{
+			conn=JdbcUtils_JNDI.getConnection();
+			String sql="select id,name from test1";
+			st=conn.prepareStatement(sql);
+			
+			rs=st.executeQuery();
+			System.out.println("用户列表如下：");
+			while(rs.next()){
+				System.out.print("id="+rs.getInt("id")+"\t\t");
+				System.out.println("name="+rs.getString("name"));
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			JdbcUtils_JNDI.release(conn, st, rs);			
 		}
 	}
 	
