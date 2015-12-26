@@ -37,7 +37,29 @@ public class DataSoureTest {
 		return id;
 	}
 	
+	public void c3p0DataSourceTest(int id){
+		Connection conn=null;
+		PreparedStatement st=null;
+		ResultSet rs=null;
+		try{
+			conn=JdbcUtils_C3P0.getConnection();
+			String sql="select name from test1 where id=?";			
+			st=conn.prepareStatement(sql);
+			st.setInt(1, id);
+			
+			rs=st.executeQuery();
+			if(rs.next()){
+				System.out.println("刚插入的数据的Name="+rs.getString("name"));
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+	
 	public static void main(String[] args) {
-		dsTest.dbcpDataSourceTest();
+		int id=dsTest.dbcpDataSourceTest();
+		
+		dsTest.c3p0DataSourceTest(id);
+		
 	}
 }
