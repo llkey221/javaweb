@@ -229,21 +229,28 @@
     <url-pattern>*.jsp</url-pattern>
     <url-pattern>*.jspf</url-pattern>
   </servlet-mapping>
-  
   <filter>
-  	<filter-name>allfilter</filter-name>
-  	<filter-class>com.study.filter.AllFilter</filter-class>
-  	<init-param>
-  		<param-name>Author</param-name>
-  		<param-value>Richard</param-value>
-  	</init-param>
-  	<init-param>
-  		<param-name>CreateDate</param-name>
-  		<param-value>2015-12-25</param-value>
-  	</init-param>
+    <filter-name>allfilter</filter-name>
+    <filter-class>com.study.filter.AllFilter</filter-class>
+    <init-param>
+      <param-name>Author</param-name>
+      <param-value>Richard</param-value>
+    </init-param>
+    <init-param>
+      <param-name>CreateDate</param-name>
+      <param-value>2015-12-25</param-value>
+    </init-param>
   </filter>
   <filter-mapping>
-  		<filter-name>allfilter</filter-name>
-  		<url-pattern>/*</url-pattern>
+    <filter-name>allfilter</filter-name>
+    <url-pattern>/*</url-pattern>
   </filter-mapping>
+  <servlet>
+  	<servlet-name>datasourceTest</servlet-name>
+  	<servlet-class>com.study.connectionpool.DataSourceServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>datasourceTest</servlet-name>
+  	<url-pattern>/servlet/dstest</url-pattern>
+  </servlet-mapping>
 </web-app>
