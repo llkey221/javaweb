@@ -261,8 +261,7 @@
     <servlet-name>jndiTest</servlet-name>
     <url-pattern>/servlet/jndi</url-pattern>
   </servlet-mapping>
-  
-    <servlet>
+  <servlet>
     <servlet-name>accountTransfer</servlet-name>
     <servlet-class>com.study.threadLocal.AccountServlet</servlet-class>
   </servlet>
@@ -271,11 +270,23 @@
     <url-pattern>/account/transfer</url-pattern>
   </servlet-mapping>
   <filter>
-  	<filter-name>transFilter</filter-name>
-  	<filter-class>com.study.threadLocal.TransactionFilter</filter-class>
+    <filter-name>transFilter</filter-name>
+    <filter-class>com.study.threadLocal.TransactionFilter</filter-class>
   </filter>
   <filter-mapping>
-  	<filter-name>transFilter</filter-name>
-  	<servlet-name>accountTransfer</servlet-name>
+    <filter-name>transFilter</filter-name>
+    <servlet-name>accountTransfer</servlet-name>
   </filter-mapping>
+  
+  <filter>
+  	<description>Web资源缓存过滤器</description>
+  	<filter-name>WebResourceCachedFilter</filter-name>
+  	<filter-class>com.study.filter.WebResourceCachedFilter</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>WebResourceCachedFilter</filter-name>
+  	<url-pattern>/login.jsp</url-pattern>
+  	<url-pattern>/test.jsp</url-pattern>
+  	<url-pattern>/error.jsp</url-pattern>
+  	</filter-mapping>
 </web-app>
